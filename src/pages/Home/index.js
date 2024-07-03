@@ -1,34 +1,28 @@
-import React from "react"; // Importa a biblioteca React
-import { View, Text, StyleSheet, Button } from "react-native"; // Importa componentes do React Native
+import React from 'react';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
-import { useNavigation } from "@react-navigation/native"; // Importa o hook de navegação
+import { useNavigation } from '@react-navigation/native';
 
-export default function Home() {
-  const navigation = useNavigation(); // Obtém a função de navegação
+export default function Home(){
+  const navigation = useNavigation();
 
-  // Função para navegar para a tela "Sobre" com parâmetros
-  function navegaSobre() {
-    navigation.navigate('Sobre', { 
-      nome: 'lucas silva', // Passa o parâmetro "nome"
-      email: 'fulano@gmail.com' // Passa o parâmetro "email"
-    });
+  function navegaDetalhes(){
+    navigation.navigate('Detalhes')
   }
 
-  return (
-    // Define o layout da tela
-    <View style={styles.container}> 
+  return(
+    <View style={styles.container}>
       <Text>Tela HOME</Text>
-      {/* Botão que chama a função navegaSobre ao ser pressionado */}
-      <Button title="Ir para Sobre" onPress={navegaSobre} /> 
+      <Button title="Ir para detalhes" onPress={ navegaDetalhes } />
     </View>
-  );
+  )
 }
 
-// Estilos para os componentes
 const styles = StyleSheet.create({
-  container: {
-    flex: 1, // Ocupa todo o espaço disponível
-    justifyContent: 'center', // Alinha os itens ao centro verticalmente
-    alignItems: 'center', // Alinha os itens ao centro horizontalmente
-  },
-});
+  container:{
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FF0000'
+  }
+})
