@@ -1,25 +1,22 @@
-import React from 'react'; // Importa a biblioteca React
-import { createNativeStackNavigator } from '@react-navigation/native-stack'; // Importa o criador de navegação em pilha do React Navigation
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Home from '../pages/Home'; // Importa a página Home
-import Detalhes from '../pages/Detalhes'; // Importa a página Detalhes
+import Home from '../pages/Home';
+import Detalhes from '../pages/Detalhes';
 
-const Stack = createNativeStackNavigator(); // Cria o navegador de pilha nativa
+const Stack = createNativeStackNavigator();
 
-// Componente funcional StackRoutes
 export default function StackRoutes(){
-  return (
+  return(
     <Stack.Navigator>
-      {/* Tela Home */}
       <Stack.Screen 
         name="Home"
         component={Home}
         options={{
-          headerShown: false, // Esconde o cabeçalho da tela Home
+          headerShown: false,
         }}
       />
 
-      {/* Tela Detalhes */}
       <Stack.Screen
         name="Detalhes"
         component={Detalhes}

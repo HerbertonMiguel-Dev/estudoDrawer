@@ -1,5 +1,5 @@
-import React  from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useLayoutEffect }  from 'react';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
 export default function Sobre(){
 

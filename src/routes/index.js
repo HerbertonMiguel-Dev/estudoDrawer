@@ -1,63 +1,52 @@
-import React from 'react'; // Importa a biblioteca React
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; // Importa o criador de navegação por abas inferiores do React Navigation
+import React from 'react';
 
-import StackRoutes from './stackRoutes'; // Importa as rotas em pilha
-import Sobre from '../pages/Sobre'; // Importa a página Sobre
-import Contato from '../pages/Contato'; // Importa a página Contato
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import Feather from 'react-native-vector-icons/Feather'; // Importa os ícones Feather
+import StackRoutes from './stackRoutes';  // Importa as rotas empilhadas (stack navigator)
+import Sobre from '../pages/Sobre';       // Importa a página "Sobre"
+import Contato from '../pages/Contato';   // Importa a página "Contato"
 
-const Tab = createBottomTabNavigator(); // Cria o navegador de abas
+import CustomDrawer from '../components/CustomDrawer';  // Importa o componente de gaveta personalizado
 
-// Componente funcional Routes
-export default function Routes(){
+const Drawer = createDrawerNavigator();  // Cria um navegador de gaveta
+
+// Função de componente principal para definir as rotas de navegação da gaveta
+export default function Routes() {
   return (
-    <Tab.Navigator
+    // Definição do navegador de gaveta
+    <Drawer.Navigator 
+      drawerContent={CustomDrawer}  // Define o conteúdo personalizado da gaveta
       screenOptions={{
-        headerShown: false, // Esconde o cabeçalho das telas
-        tabBarHideOnKeyboard: true, // Esconde a barra de abas quando o teclado é exibido
-        tabBarShowLabel: false, // Esconde os rótulos das abas
-        tabBarActiveTintColor: '#FFF', // Define a cor dos ícones das abas ativas
-
-        tabBarStyle: {
-          backgroundColor: '#202225', // Define a cor de fundo da barra de abas
-          borderTopWidth: 0 // Remove a borda superior da barra de abas
-        }
+        headerShown: false,  // Oculta o cabeçalho padrão
+        drawerStyle:{
+          // Você pode definir estilos personalizados para a gaveta aqui
+        },
+        drawerActiveBackgroundColor: '#00dae4',  // Cor de fundo para o item ativo da gaveta
+        drawerActiveTintColor: '#fff',  // Cor do texto para o item ativo da gaveta
+        drawerInactiveBackgroundColor: '#f1f1f1',  // Cor de fundo para os itens inativos da gaveta
+        drawerInactiveTintColor: '#000',  // Cor do texto para os itens inativos da gaveta
       }}
     >
-      {/* Tela HomeStack */}
-      <Tab.Screen
-        name="HomeStack"
+      {/* Define a rota para a tela "Home" que usa StackRoutes */}
+      <Drawer.Screen
+        name="Home"
         component={StackRoutes}
         options={{
-          tabBarIcon: ({ color, size }) => {
-            return <Feather name="home" color={color} size={size} /> // Define o ícone da aba HomeStack
-          },
+          title: 'Inicio'  // Título exibido na gaveta
         }}
       />
 
-      {/* Tela Sobre */}
-      <Tab.Screen
+      {/* Define a rota para a tela "Sobre" */}
+      <Drawer.Screen
         name="Sobre"
         component={Sobre}
-        options={{
-          tabBarIcon: ({ color, size }) => {
-            return <Feather name="file-text" color={color} size={size} /> // Define o ícone da aba Sobre
-          }
-        }}
       />
 
-      {/* Tela Contato */}
-      <Tab.Screen
+      {/* Define a rota para a tela "Contato" */}
+      <Drawer.Screen
         name="Contato"
         component={Contato}
-        options={{
-          //headerShown: false,
-          tabBarIcon: ({ color, size }) => {
-            return <Feather name="phone-call" color={color} size={size} /> // Define o ícone da aba Contato
-          }
-        }}
       />
-    </Tab.Navigator>
-  )
+    </Drawer.Navigator>
+  );
 }

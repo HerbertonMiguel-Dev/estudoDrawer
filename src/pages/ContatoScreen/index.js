@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text } from 'react-native';
 
-export default function Contato(){
+export default function ContatoScreen(){
   return(
     <View>
       <Text>Pagina Contato</Text>

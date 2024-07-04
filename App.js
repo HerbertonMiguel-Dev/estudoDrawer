@@ -1,15 +1,13 @@
-import React from 'react'; // Importa a biblioteca React
-import { NavigationContainer } from '@react-navigation/native'; // Importa o contêiner de navegação do React Navigation
+import 'react-native-gesture-handler';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 
-import Routes from './src/routes'; // Importa as rotas da aplicação
+import Routes from './src/routes';
 
-// Componente funcional principal da aplicação
 export default function App(){
   return(
-    //ontainer principal de navegação 
-    <NavigationContainer> 
-      {/* Componente que contém as rotas da aplicação  */}
-      <Routes /> 
+    <NavigationContainer>
+      <Routes/>
     </NavigationContainer>
   )
 }
